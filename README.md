@@ -9,6 +9,8 @@
 status](https://travis-ci.com/urodoct/iuform.svg?branch=master)](https://travis-ci.com/urodoct/iuform)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/urodoct/iuform?branch=master&svg=true)](https://ci.appveyor.com/project/urodoct/iuform)
+[![Codecov test
+coverage](https://codecov.io/gh/urodoct/iuform/branch/master/graph/badge.svg)](https://codecov.io/gh/urodoct/iuform?branch=master)
 <!-- badges: end -->
 
 The goal of iuform is to enable the user to easily create online forms.
