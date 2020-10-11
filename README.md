@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.com/urodoct/iuform.svg?branch=master)](https://travis-ci.com/urodoct/iuform)
 <!-- badges: end -->
 
 The goal of iuform is to enable the user to easily create online forms.
