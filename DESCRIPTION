@@ -16,3 +16,5 @@ Suggests:
 VignetteBuilder: knitr
 Imports: 
     qpdf
+URL: https://github.com/urodoct/iuform
+BugReports: https://github.com/urodoct/iuform/issues
