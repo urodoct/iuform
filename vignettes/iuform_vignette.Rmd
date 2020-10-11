@@ -1,0 +1,21 @@
+---
+title: "Welcom to iuform: start making data collection forms now!"
+output: rmarkdown::html_vignette
+author: "Mohammad Mahmoud"
+date: "`r.Sys.Date()`"
+vignette: >
+  %\VignetteIndexEntry{iuform_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(iuform)
+```
