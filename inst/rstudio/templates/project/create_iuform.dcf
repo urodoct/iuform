@@ -1,0 +1,10 @@
+Binding: create_iuform
+Title: Package for creating online forms
+OpenFiles: server.R
+openFiles: ui.R
+Icon: iuform.png
+
+
+Parameter: author
+Widget: TextInput
+Label: Author
