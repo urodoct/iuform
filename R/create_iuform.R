@@ -33,7 +33,7 @@ create_iuform <- function(path, ...) {
     sep = "\n"
   )
 # Generatign ui.R
-uifile <- shiny:: shinyUI(shiny:: fluidPage(
+uifile <- paste (shiny:: shinyUI(shiny:: fluidPage(
 
   # Application title
   shiny:: titlePanel("Old Faithful Geyser Data"),
@@ -53,11 +53,11 @@ uifile <- shiny:: shinyUI(shiny:: fluidPage(
       shiny::  plotOutput("distPlot")
     )
   )
-))
+)))
 
 #generative server.R
 
-serverfile <- shiny:: shinyServer(function(input, output) {
+serverfile <-paste( shiny:: shinyServer(function(input, output) {
 
   shiny:: output$distPlot <- shiny:: renderPlot({
 
@@ -70,7 +70,7 @@ serverfile <- shiny:: shinyServer(function(input, output) {
 
   })
 
-})
+}))
 
 
 
