@@ -2,7 +2,7 @@ Binding: create_iuform
 Title: Start new IUform
 OpenFiles: server.R
 openFiles: ui.R
-Icon: iuform.png
+Icon: IUform_Logo.png
 
 
 Parameter: author
