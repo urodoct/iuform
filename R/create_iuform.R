@@ -7,7 +7,6 @@
 #'
 #' @examples
 #' create_form("my form")
-library(shiny)
 create_iuform <- function(path, ...) {
   # ensure path exists
   dir.create(path, recursive = TRUE, showWarnings = FALSE)

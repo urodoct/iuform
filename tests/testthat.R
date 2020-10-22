@@ -1,4 +1,4 @@
 library(testthat)
 library(iuform)
 
-test_check("iuform")
+testthat::test_check("iuform")
