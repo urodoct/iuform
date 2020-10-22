@@ -33,15 +33,15 @@ create_iuform <- function(path, ...) {
     sep = "\n"
   )
 # Generatign ui.R
-uifile <- shinyUI(fluidPage(
+uifile <- shiny:: shinyUI(shiny:: fluidPage(
 
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  shiny:: titlePanel("Old Faithful Geyser Data"),
 
   # Sidebar with a slider input for number of bins
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput("bins",
+  shiny:: sidebarLayout(
+    shiny:: sidebarPanel(
+      shiny::  sliderInput("bins",
                   "Number of bins:",
                   min = 1,
                   max = 50,
@@ -49,17 +49,17 @@ uifile <- shinyUI(fluidPage(
     ),
 
     # Show a plot of the generated distribution
-    mainPanel(
-      plotOutput("distPlot")
+    shiny:: mainPanel(
+      shiny::  plotOutput("distPlot")
     )
   )
 ))
 
 #generative server.R
 
-serverfile <- shinyServer(function(input, output) {
+serverfile <- shiny:: shinyServer(function(input, output) {
 
-  output$distPlot <- renderPlot({
+  shiny:: output$distPlot <- shiny:: renderPlot({
 
     # generate bins based on input$bins from ui.R
     x    <- faithful[, 2]
