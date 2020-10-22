@@ -16,6 +16,8 @@ Suggests:
     covr
 VignetteBuilder: knitr
 Imports: 
-    qpdf
+    qpdf,
+    shiny,
+    tidyverse
 URL: https://github.com/urodoct/iuform
 BugReports: https://github.com/urodoct/iuform/issues
