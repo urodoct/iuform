@@ -1,80 +1,150 @@
-#' Creates a Shiny Form 1st template
+#' Starting a new IUform Shiny aplication
 #'
-#' @param x The name of the form
+#' @param path this is the IUform name and the folder it would live in
+#' @param open Boolean open the created project
+#' @param author gives author name
+#' @param package_name Default is `basename(path)` or this otherwise it will be `basename(getwd())`
+#' @param ... Arguments passed from the template.
 #'
-#' @return
-#'
-#'
-#' @examples
-#' create_form("my form")
-create_iuform <- function(path, ...) {
-  # ensure path exists
-  dir.create(path, recursive = TRUE, showWarnings = FALSE)
+#' @export
+create_IUform <- function(
+  path,
+  open = TRUE,
+  package_name = basename(path),
+  author,
+  ...
+) {
 
-  # generate header for file
-  header <- c(
-    "# This file was generated IUform Package",
-    "# The following inputs were received:",
-    ""
+  path <- fs::path_expand(path)
+
+  if (path == '.' & package_name == fs::path_file(path)){
+    package_name <- fs::path_file(getwd())
+  }
+
+
+
+  if (fs::dir_exists(path)){
+    res <- yesno(
+      paste("The path", path, "already exists, override?")
+    )
+    if (!res){
+      return(invisible(NULL))
+    }
+  }
+
+  cli::cat_rule("Creating dir")
+  fs::dir_create(
+    path,
+    recurse = TRUE
+  )
+  cli::cat_bullet(
+    "Created IUform directory",
+    bullet = "tick",
+    bullet_col = "green"
   )
 
-  # collect inputs and paste together as 'Parameter: Value'
-  dots <- list(...)
-  text <- lapply(seq_along(dots), function(i) {
-    key <- names(dots)[[i]]
-    val <- dots[[i]]
-    paste0(key, ": ", val)
-  })
 
-  # collect into single text string
-  contents <- paste(
-    paste(header, collapse = "\n"),
-    paste(text, collapse = "\n"),
-    sep = "\n"
+  cli::cat_rule("Copying IUform skeleton")
+  from <- system.file(
+    "IUformshiny",
+    package = "iuform",
+    lib.loc = NULL,
+    mustWork = F
   )
-# Generatign ui.R
-uifile <- paste (shiny:: shinyUI(shiny:: fluidPage(
 
-  # Application title
-  shiny:: titlePanel("Old Faithful Geyser Data"),
+  # Copy the predefined ui.R and server.R
+  fs::dir_copy(path = from, new_path = path, overwrite = TRUE)
 
-  # Sidebar with a slider input for number of bins
-  shiny:: sidebarLayout(
-    shiny:: sidebarPanel(
-      shiny::  sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
-    ),
+  # Listing copied files ***from source directory***
+  copied_files <- list.files(path = from,
+                             full.names = FALSE,
+                             all.files = TRUE,
+                             recursive = TRUE)
 
-    # Show a plot of the generated distribution
-    shiny:: mainPanel(
-      shiny::  plotOutput("distPlot")
+  # for loop to replace package name
+  for (f in copied_files) {
+    copied_file <- file.path(path, f)
+
+    if (grepl("^REMOVEME", f)) {
+      fs::file.rename(from = copied_file,
+                  to =  fs::file.path(path, gsub("REMOVEME", "", f)))
+      copied_file <- fs::file.path(path, gsub("REMOVEME", "", f))
+    }
+
+    if (!grepl("ico$", copied_file)) {
+      try({
+        iuform::replace_word(
+          file = copied_file,
+          pattern = "IUformshiny",
+          replace = package_name)
+      }, silent = T)
+    }
+  }
+  cli::cat_bullet(
+    "Copied app skeleton",
+    bullet = "tick",
+    bullet_col = "green"
+  )
+
+
+
+
+  # old <- setwd(path)
+  # usethis::use_latest_dependencies()
+  # setwd(old)
+
+  cli::cat_rule("Done")
+
+  cli::cat_line(
+    paste0("Congrats ", author, ": ",
+           "A new IUform named ",
+           package_name,
+           " was created at ",
+           fs::path_abs(path),
+           " .\n",
+           "To continue working on your form, follow the steps below!"
     )
   )
-)))
-
-#generative server.R
-
-serverfile <-paste( shiny:: shinyServer(function(input, output) {
-
-  shiny:: output$distPlot <- shiny:: renderPlot({
-
-    # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2]
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-
-  })
-
-}))
+  contents <-   cli::cat_line(
+    paste0("Congrats ", author, ": ",
+           "A new IUform named ",
+           package_name,
+           " was created at ",
+           fs::path_abs(path),
+           " .\n",
+           "To continue working on your form, follow the steps below!"
+    )
+  )
 
 
+  if ( open & rstudioapi::isAvailable() ) {
+    rstudioapi::openProject(path = path)
+  }
+
+  return(
+    invisible(
+     fs::path_abs(path)
+    )
+  )
+}
+
+# to be used in RStudio IDE
+create_IUform_gui <- function(path,...){
+  dots <- list(...)
+
+  create_IUform(
+    path = path,
+    open = T,
+    author = dots$author
+  )
+  contents <- glue::glue(
+    paste0("Congrats ", dots$author, ": ",
+           "your IUform was created",
+           " .\n",
+           "To continue working on your form, follow the steps below!"
+    )
+  )
 
   # write to index file
-  writeLines(serverfile, con = file.path(path, "server"))
-  writeLines(uifile, con = file.path(path, "ui"))
+  writeLines(contents, con = file.path(path, "INDEX"))
 }

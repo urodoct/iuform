@@ -1,10 +1,9 @@
-Binding: create_iuform
+Binding: create_IUform_gui
 Title: Start new IUform
-OpenFiles: server.R
-openFiles: ui.R
+OpenFiles: INDEX
 Icon: logo.png
 
 
 Parameter: author
 Widget: TextInput
-Label: Author
+Label: author
