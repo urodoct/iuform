@@ -30,6 +30,7 @@ Imports:
     rlang,
     roxygen2,
     rstudioapi,
+    stringr,
     shiny,
     testthat,
     usethis(>= 1.6.0),
