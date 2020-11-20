@@ -6,7 +6,7 @@
 #' @param package_name Default is `basename(path)` or this otherwise it will be `basename(getwd())`
 #' @param ... Arguments passed from the template.
 #'
-#'
+#'@export
 create_IUform <- function(
   path,
   open = TRUE,
