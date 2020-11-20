@@ -22,10 +22,9 @@ Imports:
     fs,
     here,
     htmltools,
-    golem,
     jsonlite,
     pkgload,
-    qpdf,
+    readr,
     remotes,
     rlang,
     roxygen2,
@@ -41,16 +40,12 @@ Suggests:
     devtools,
     glue,
     knitr,
-    pkgdown,
     purrr,
     rcmdcheck,
     rmarkdown,
-    spelling,
-    stringr,
     tools,
     withr,
     pkgbuild,
-    processx,
-    rsconnect
+    processx
 URL: https://github.com/urodoct/iuform
 BugReports: https://github.com/urodoct/iuform/issues
