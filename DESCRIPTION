@@ -16,6 +16,7 @@ Imports:
     fs,
     glue,
     readr,
+    rlang,
     rstudioapi,
     shiny,
     stringr

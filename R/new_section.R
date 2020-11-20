@@ -6,7 +6,20 @@
 #' @export
 new_section <- function(label){
 
-  section_name <- as.factor(label)
+
+
+
+  #quoting the user arguments using enquo
+
+  enlabel <- rlang::enquo(label)
+
+  #quting them again using paste and que_name
+  label <- paste(rlang::quo_name(enlabel))
+
+  section_name <- label
+
+  ##### END of quoting/unquoting
+
   part1 <- glue::glue("  div(\n",
                        "id = ",'"{label}"', ",",
                       " !E",

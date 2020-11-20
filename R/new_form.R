@@ -8,8 +8,17 @@
 #' @export
 new_form <- function(name, label, chaptered=FALSE){
 
-  form_name <- as.factor(name)
-  firstsection_name <- as.factor(label)
+
+  #quoting the user arguments using enquo
+
+  enlabel <- rlang::enquo(label)
+  enname <- rlang::enquo(name)
+  #quting them again using paste and que_name
+  label <- paste(rlang::quo_name(enlabel))
+  name <- paste(rlang::quo_name(enname))
+  form_name <- name
+  firstsection_name <-label
+  ##### END of quoting/unquoting
 #######################################################
   #check if there is already a form name in bobo.R
   #read it

@@ -8,8 +8,17 @@
 #' @export
 new_menu <- function(label, must_fill=F, section){
 
-  element_name <- as.factor(label)
-  section_name <- as.factor(section)
+  #quoting the user arguments using enquo
+
+  enlabel <- rlang::enquo(label)
+  ensection <- rlang::enquo(section)
+  #quting them again using paste and que_name
+  label <- paste(rlang::quo_name(enlabel))
+  section <- paste(rlang::quo_name(ensection))
+  element_name <- label
+  section_name <-section
+  ##### END of quoting/unquoting
+
   blanky <- ""
 
   #writing the form element code
