@@ -15,10 +15,12 @@ Imports:
     cli,
     fs,
     glue,
-    knitr,
     readr,
     rstudioapi,
     shiny,
     stringr
+Suggests:
+    knitr,
+    testthat
 URL: https://github.com/urodoct/iuform
 BugReports: https://github.com/urodoct/iuform/issues
