@@ -3,7 +3,7 @@
 #' @param code this is code you want to trim its last char
 #'
 #'
-#' @export
+#'
 del_end <- function(code){
   #first count the total number of chars including whitespace
 

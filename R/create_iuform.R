@@ -6,7 +6,7 @@
 #' @param package_name Default is `basename(path)` or this otherwise it will be `basename(getwd())`
 #' @param ... Arguments passed from the template.
 #'
-#' @export
+#'
 create_IUform <- function(
   path,
   open = TRUE,
@@ -24,7 +24,7 @@ create_IUform <- function(
 
 
   if (fs::dir_exists(path)){
-    res <- yesno(
+    res <- (
       paste("The path", path, "already exists, override?")
     )
     if (!res){
@@ -66,14 +66,14 @@ create_IUform <- function(
     copied_file <- file.path(path, f)
 
     if (grepl("^REMOVEME", f)) {
-      fs::file.rename(from = copied_file,
-                  to =  fs::file.path(path, gsub("REMOVEME", "", f)))
-      copied_file <- fs::file.path(path, gsub("REMOVEME", "", f))
+      file.rename(from = copied_file,
+                  to =  file.path(path, gsub("REMOVEME", "", f)))
+      copied_file <- file.path(path, gsub("REMOVEME", "", f))
     }
 
     if (!grepl("ico$", copied_file)) {
       try({
-        iuform::replace_word(
+        replace_word(
           file = copied_file,
           pattern = "IUformshiny",
           replace = package_name)

@@ -12,40 +12,13 @@ LazyData: true
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Imports: 
-    attempt (>= 0.3.0),
-    do,
     cli,
-    config,
-    crayon,
-    desc,
-    dockerfiler,
     fs,
-    here,
-    htmltools,
-    jsonlite,
-    pkgload,
-    readr,
-    remotes,
-    rlang,
-    roxygen2,
-    rstudioapi,
-    stringr,
-    shiny,
-    testthat,
-    usethis(>= 1.6.0),
-    utils,
-    yaml
-Suggests:
-    covr,
-    devtools,
     glue,
     knitr,
-    purrr,
-    rcmdcheck,
-    rmarkdown,
-    tools,
-    withr,
-    pkgbuild,
-    processx
+    readr,
+    rstudioapi,
+    shiny,
+    stringr
 URL: https://github.com/urodoct/iuform
 BugReports: https://github.com/urodoct/iuform/issues
