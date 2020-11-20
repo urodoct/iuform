@@ -1,6 +1,6 @@
 Binding: create_IUform_gui
 Title: Start new IUform
-OpenFiles: build/new_form.R
+OpenFiles: INDEX.R
 Icon: logo.png
 
 
