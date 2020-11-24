@@ -23,9 +23,9 @@ menu_options<- function(label,...){
 
   blanky <-  glue::glue("!{label}")
   # making dots a vector of length 1 to make the replacement work
-  dotsReduced <- Reduce("paste", dots)
+  dotsReduced <- Reduce(f=function(...)paste(...,sep = ","), dots)
   # Separating items with a comma
-  dots<- stringr::str_replace_all(dotsReduced, pattern= "\\s",
+  dots<- stringr::str_replace_all(dotsReduced, pattern= "\\,",
                                      replacement = "\\'\\,\\'")
   dotsglue <- glue::glue("c('{dots}')")
 

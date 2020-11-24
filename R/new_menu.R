@@ -2,12 +2,12 @@
 #'
 #' @param label this is the tag of the form element
 #' @param name the element name MUST be within quotes if more than one word
-#' @param must_fill tags mandatory field
 #' @param section the section where the element will be placed
 #'
 #'
 #' @export
-new_menu <- function(label,name, must_fill=F, section){
+#' @example
+new_menu <- function(label,name,section){
 
   #quoting the user arguments using enquo
 
@@ -30,7 +30,7 @@ new_menu <- function(label,name, must_fill=F, section){
 
   )
   #writing the form element code
-  part1 <- glue::glue("  selectInput('{label}','{element_name}', {if(must_fill)return ('{blanky2}')else return ('')} {blanky}),",)
+  part1 <- glue::glue("  selectInput('{label}','{element_name}', {blanky}),",)
   contents <- paste0(part1, "\n")
   #################################################################
   #Reading what is happening in ui.R [file]
@@ -65,7 +65,7 @@ new_menu <- function(label,name, must_fill=F, section){
   # writing the updated file
   readr::write_file(rody1, glue::glue("./ui.R"), append = F)
   #bobo file to save all labels
-  element_name <- glue::glue("\n\n" ,' {if(must_fill)return ({glue::glue("*{label}")}) else (glue::glue("^{label}\n"))}', "\n\n" )
+  element_name <- glue::glue("\n\n" ,' {(glue::glue("^{label}\n"))}', "\n\n" )
   readr::write_file(element_name, glue::glue("./bobo.R"), append = T)
 }
 
