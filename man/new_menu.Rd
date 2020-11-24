@@ -4,10 +4,12 @@
 \alias{new_menu}
 \title{form element}
 \usage{
-new_menu(label, must_fill = F, section)
+new_menu(label, name, must_fill = F, section)
 }
 \arguments{
 \item{label}{this is the tag of the form element}
+
+\item{name}{the element name MUST be within quotes if more than one word}
 
 \item{must_fill}{tags mandatory field}
 

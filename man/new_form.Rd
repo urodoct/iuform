@@ -4,12 +4,10 @@
 \alias{new_form}
 \title{to start the form, ensures only one form}
 \usage{
-new_form(name, label, chaptered = FALSE)
+new_form(name, chaptered = F)
 }
 \arguments{
 \item{name}{the  title/name of the form}
-
-\item{label}{this is the tag of the form first section of the form}
 
 \item{chaptered}{if many section will be in the form}
 }

@@ -4,10 +4,12 @@
 \alias{new_button}
 \title{form element}
 \usage{
-new_button(label, must_fill = F, section)
+new_button(label, name, must_fill = F, section)
 }
 \arguments{
 \item{label}{this is the tag of the form element}
+
+\item{name}{the element name MUST be within quotes if more than one word}
 
 \item{must_fill}{tags mandatory field}
 

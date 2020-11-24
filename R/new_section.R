@@ -20,16 +20,16 @@ new_section <- function(label){
 
   ##### END of quoting/unquoting
 
-  part1 <- glue::glue("  div(\n",
+  part1 <- glue::glue("  \n\n,  div(\n",
                        "id = ",'"{label}"', ",",
-                      " !E",
-                      "  ),\n")
+                      " !E{label}",
+                      "  )\n")
 contents <- paste0(part1, "\n")
-rody <- readr::read_file(glue::glue("./sat1.R"))
+rody <- readr::read_file(glue::glue("./ui.R"))
 ##################################################################
 # First section template or pattern looks like the following
 
-patty <- glue::glue("div(","id = ",'"{label}"', ",", " !E  )",",")
+patty <- glue::glue("div(","id = ",'"{label}"', ",", " !E{label}  )",",")
 
 # Search if label is in the code
 
@@ -45,7 +45,7 @@ if (section_TF>0)
 # if not then just add it
 else {
   # rody3 <- del_end(rody)
-  rody3 <- readr::read_file(glue::glue("./sat1.R"))
+  rody3 <- readr::read_file(glue::glue("./ui.R"))
   rody1 <- glue::glue({del_end(rody3)},"\n",patty, ")")
   #####################
   section_name <- glue::glue("\n\n",'&"{label}"\n\n',"\n\n" )
@@ -53,6 +53,6 @@ else {
 }
 
 
-  readr::write_file(rody1, glue::glue("./sat1.R"), append = F)
+  readr::write_file(rody1, glue::glue("./ui.R"), append = F)
 
 }

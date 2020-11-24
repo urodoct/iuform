@@ -4,12 +4,16 @@
 \alias{new_slider}
 \title{form element}
 \usage{
-new_slider(label, must_fill = F, section)
+new_slider(label, name, must_fill = F, ticks = F, section)
 }
 \arguments{
 \item{label}{this is the tag of the form element}
 
+\item{name}{the element name MUST be within quotes if more than one word}
+
 \item{must_fill}{tags mandatory field}
+
+\item{ticks}{status of slider ticks}
 
 \item{section}{the section where the element will be placed}
 }

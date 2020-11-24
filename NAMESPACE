@@ -2,6 +2,7 @@
 
 export(create_IUform)
 export(done)
+export(menu_options)
 export(new_button)
 export(new_checkbox)
 export(new_form)
@@ -9,3 +10,4 @@ export(new_freetext)
 export(new_menu)
 export(new_section)
 export(new_slider)
+export(slider_options)

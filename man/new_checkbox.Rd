@@ -4,14 +4,18 @@
 \alias{new_checkbox}
 \title{form element}
 \usage{
-new_checkbox(label, must_fill = F, section)
+new_checkbox(label, name, must_fill = F, section, Checked = F)
 }
 \arguments{
 \item{label}{this is the ta of the form element}
 
+\item{name}{the element name MUST be within quotes if more than one word}
+
 \item{must_fill}{tags mandatory field}
 
 \item{section}{the section where the element will be placed}
+
+\item{Checked}{status of the check box at the start}
 }
 \description{
 form element

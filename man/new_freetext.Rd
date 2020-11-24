@@ -4,10 +4,12 @@
 \alias{new_freetext}
 \title{form element}
 \usage{
-new_freetext(label, must_fill = F, section)
+new_freetext(label, name, must_fill = F, section)
 }
 \arguments{
 \item{label}{this is the tag of the form element}
+
+\item{name}{the element name MUST be within quotes if more than one word}
 
 \item{must_fill}{tags mandatory field}
 

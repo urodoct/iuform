@@ -1,5 +1,5 @@
 # creating a vector of mandatory fields
-!1
+fieldsMandatory <- c("name", "favourite_pkg")
 
 # define the mandatory fileds with red asterisk
 labelMandatory <- function(label) {
@@ -13,7 +13,7 @@ appCSS <- ".mandatory_star { color: red; }
 #error { color: red; }"
 
 # getting all the elements names
-!A
+fieldsAll <- c("name", "favourite_pkg", "used_shiny", "r_num_years", "os_type")
 
 #building responses directory
 responsesDir <- file.path("responses")
