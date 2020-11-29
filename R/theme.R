@@ -38,7 +38,7 @@ theme <- function(theme){
                                       replacement = "" )
     readr::write_file(allaz, glue::glue("./ui.R"), append = F)
     }
-
+########################################################################
   else if (theme=="Safari") {
     allaz <- stringr::str_replace_all(rody, pattern= "formCSS1",
                                       replacement = "Safari" )
@@ -51,6 +51,35 @@ theme <- function(theme){
     readr::write_file(allaz, glue::glue("./ui.R"), append = F)
 
   }
+ ########################################################################
+
+########################################################################
+  else if (theme=="Maroon") {
+    allaz <- stringr::str_replace_all(rody, pattern= "formCSS1",
+                                      replacement = "Maroon" )
+    readr::write_file(allaz, glue::glue("./ui.R"), append = F)
+
+  }
+  else if (theme=="maroon") {
+    allaz <- stringr::str_replace_all(rody, pattern= "formCSS1",
+                                      replacement = "Maroon" )
+    readr::write_file(allaz, glue::glue("./ui.R"), append = F)
+
+  }
+  ########################################################################
+  else if (theme=="Ocean") {
+    allaz <- stringr::str_replace_all(rody, pattern= "formCSS1",
+                                      replacement = "Ocean" )
+    readr::write_file(allaz, glue::glue("./ui.R"), append = F)
+
+  }
+  else if (theme=="ocean") {
+    allaz <- stringr::str_replace_all(rody, pattern= "formCSS1",
+                                      replacement = "Ocean" )
+    readr::write_file(allaz, glue::glue("./ui.R"), append = F)
+
+  }
+  ########################################################################
   else  {
     allaz <- stringr::str_replace_all(rody, pattern= "formCSS1",
                                       replacement = "" )
