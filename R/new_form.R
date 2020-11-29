@@ -38,9 +38,10 @@ else
                       "!1\n\n",
                       "!A\n\n",
                       "ui <- fluidPage(\n",
+                      "  tags$style(formCSS),\n",
                       "  shinyjs::useShinyjs(),\n",
                       "  shinyjs::inlineCSS(appCSS),\n",
-                      "  titlePanel('{form_name}'),\n\n",
+                      "  tags$fieldset('{form_name}'),\n\n",
                       ######Start of the main div
                       "  div(\n",
                       "id = ","'form'", ",",

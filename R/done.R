@@ -34,7 +34,7 @@ done <- function(){
     "fieldsMandatory <- c(","'",
     "{manmat_elements}","')")
   manvect_elementsN <- glue::glue(
-    "fieldsMandatory <-","''")
+    "fieldsMandatory <-","'sumbit'")
   # # for one
   # oneman_elements <- glue::glue(
   #   "fieldsMandatory <- ",
@@ -76,6 +76,9 @@ if (numb_stars>0){
   all_elements1 <- glue::glue(
     "fieldsAll <- c(","'",
     "{manmat_elements2}","'",")")
+  all_elements2 <- glue::glue(
+    "fieldsAll <- c(","'",
+    "{manmat_elements}","'",")")
   all_elements0 <- glue::glue(
     "fieldsAll <- c(","'","')")
 
@@ -86,6 +89,12 @@ if (numb_stars>0){
   else if (numb_expo>0 & numb_stars<1) {
     allaz <-  stringr::str_replace_all(mody, pattern= "!A",
                                       replacement = glue::glue ("{all_elements1}", "\n\n"))
+    readr::write_file(allaz, glue::glue("./ui.R"), append = F)
+
+  }
+  else if (numb_expo<1 & numb_stars>0) {
+    allaz <-  stringr::str_replace_all(mody, pattern= "!A",
+                                       replacement = glue::glue ("{all_elements2}", "\n\n"))
     readr::write_file(allaz, glue::glue("./ui.R"), append = F)
 
   }
@@ -139,10 +148,17 @@ if (numb_stars>0){
       replacement =glue::glue ("{all_elements1}", "\n") )
     readr::write_file(serverFinal, glue::glue("./server.R"), append = F)
   }
+  else if (numb_expo<1 & numb_stars>0){
+    serverFinal <- stringr::str_replace_all(
+      serverMan, pattern= "!A",
+      replacement =glue::glue ("{all_elements2}", "\n") )
+    readr::write_file(serverFinal, glue::glue("./server.R"), append = F)
+  }
   else {
     serverFinal <- stringr::str_replace_all(
       serverMan, pattern= "!A",
-      replacement =glue::glue ("{all_elements0}", "\n") )
+      replacement =glue::glue(
+        "fieldsAll <- c(","'downloadBtn","'",")") )
     readr::write_file(serverFinal, glue::glue("./server.R"), append = F)
   }
 ##############################################################################

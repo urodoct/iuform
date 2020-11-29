@@ -28,9 +28,15 @@ new_freetext <- function(label,name, must_fill=F, section){
     "')"
 
   )
+  blanky3 <-glue::glue(
+    "'",
+    "{element_name}",
+    "'"
+
+  )
 
   #writing the form element code
-  part1 <- glue::glue("  textInput('{label}', {if(must_fill)return ('{blanky2}')else return ('')}),",)
+  part1 <- glue::glue("  textInput('{label}', {if(must_fill)return ('{blanky2}')else return ('{blanky3}')}),",)
   contents <- paste0(part1, "\n")
   #################################################################
   #Reading what is happening in ui.R [file]
