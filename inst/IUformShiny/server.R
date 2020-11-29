@@ -47,8 +47,8 @@ server = function(input, output, session) {
              },
              logical(1))
     mandatoryFilled <- all(mandatoryFilled)
-
-    shinyjs::toggleState(id = "submit", condition = mandatoryFilled)
+  if( fieldsMandatory== 'sumbit') return(shinyjs::enable(id = "submit"))
+   else( shinyjs::toggleState(id = "submit", condition = mandatoryFilled))
   })
 
   #getting the input from each of the fields by using sapply loop, also getting the the time
