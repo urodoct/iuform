@@ -15,6 +15,9 @@ new_freetext <- function(label,name, must_fill=F, section){
   ensection <- rlang::enquo(section)
   #quting them again using paste and que_name
   label <- paste(rlang::quo_name(enlabel))
+
+
+
   name <- paste(rlang::quo_name(enname))
   section <- paste(rlang::quo_name(ensection))
   element_name <- name

@@ -2,9 +2,10 @@
 #' @export
 done <- function(){
 
+
   rody <- readr::read_file(glue::glue("./ui.R"))
 
-
+rody <- stringr::str_replace_all(rody, pattern= "formCSS1", replacement = " " )
 
   # read bobo
   bobo <- readr::read_file(glue::glue("./bobo.R"))
